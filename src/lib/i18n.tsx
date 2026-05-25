@@ -216,61 +216,79 @@ export const translations = {
     },
     pricing: {
       title: "Preços",
-      subtitle: "Mensalidades, entradas, aulas e alugueres.",
-      sections: [
+      subtitle: "Indoor, outdoor e aluguer de material — directamente do ginásio.",
+      close: "Fechar",
+      footnote: "Preços sujeitos a alteração. Para preços actualizados, contacta-nos directamente.",
+      tabs: { indoor: "Indoor", outdoor: "Outdoor", rentals: "Aluguer" },
+      birthday: { title: "Festas de Aniversário", text: "Preço sob consulta — contacta-nos para planear o teu evento." },
+      indoor: [
         {
-          name: "Entradas Diárias",
+          name: "Entrada Diária",
           rows: [
-            ["Adulto — dia completo", "€12"],
-            ["Estudante / menor de 18", "€9"],
-            ["Crianças (até 12 anos)", "€7"],
-            ["Primeira visita (com intro)", "€15"],
+            ["Adulto", "€11"],
+            ["Estudante", "€9,90"],
+            ["Infantil", "€8,90"],
+            ["Pack 10 + 1", "€89,90"],
           ],
         },
         {
-          name: "Packs de Entradas",
+          name: "Mensalidade",
           rows: [
-            ["5 entradas", "€55"],
-            ["10 entradas", "€100"],
-            ["20 entradas", "€180"],
-          ],
-        },
-        {
-          name: "Mensalidades",
-          rows: [
-            ["Mensal — ilimitado", "€55"],
-            ["Mensal — estudante", "€45"],
-            ["Anual — ilimitado", "€550"],
+            ["Adulto", "€45"],
+            ["Estudante", "€39,90"],
+            ["Infantil", "€35,90"],
+            ["Família (3 elementos ou mais)", "€35,90 / pax"],
           ],
         },
         {
           name: "Aulas",
           rows: [
-            ["Curso iniciante (4 sessões)", "€80"],
-            ["Aula de grupo — avulso", "€20"],
-            ["Aula privada 1-para-1 (1h)", "€40"],
-            ["Aula de crianças — mensal", "€55"],
-          ],
-        },
-        {
-          name: "Alugueres",
-          rows: [
-            ["Sapatos de escalada", "€3"],
-            ["Arnês", "€3"],
-            ["Pack completo (sapatos + arnês + descensor)", "€7"],
-          ],
-        },
-        {
-          name: "Outdoor & Extras",
-          rows: [
-            ["Sessão outdoor guiada (½ dia)", "desde €45"],
-            ["Festa de aniversário (até 10 crianças)", "desde €150"],
+            ["1 Pessoa (1 hora)", "€35"],
+            ["2 Pessoas (1 hora)", "€30 / pax"],
+            ["3 Pessoas (1 hora)", "€25 / pax"],
+            ["4 Pessoas (2 horas)", "€20 / pax"],
           ],
         },
       ],
-      footnote: "Preços indicativos. Para preços actualizados, contacta-nos directamente.",
-      close: "Fechar",
+      outdoor: [
+        {
+          name: "Escalada em Rocha com Guia",
+          rows: [
+            ["1 Pessoa com material incluído", "€49"],
+            ["1 Pessoa sem material", "€45"],
+            ["1 Pessoa com mensalidade ou sem material incluído", "€45"],
+            ["Mais de 4 pessoas com material incluído", "€40 / pax"],
+          ],
+        },
+      ],
+      rentals: [
+        {
+          name: "Aluguer de Material Indoor",
+          rows: [
+            ["Pés de Gato", "€4"],
+            ["Arnês", "€4"],
+            ["Corda", "€4"],
+            ["Aparelho de Segurança Gri-Gri", "€3"],
+            ["Bolsa de Magnésio", "€2"],
+          ],
+        },
+        {
+          name: "Aluguer de Material Outdoor",
+          note: "Caução em dinheiro exigida por cada peça — devolvida na entrega do material.",
+          rows: [
+            ["Pés de Gato", "€12", "Caução €50"],
+            ["Arnês", "€8", "Caução €25"],
+            ["Corda", "€15", "Caução €90"],
+            ["Aparelho de Segurança Gri-Gri", "€10", "Caução €50"],
+            ["Capacete", "€6", "Caução €20"],
+            ["6 / 12 Express", "€18 / €28", "Caução €70 / €100"],
+            ["Mosquetão com Rosca de Segurança", "€4", "Caução €20"],
+            ["Material Completo", "€73 / €82", "Caução €300"],
+          ],
+        },
+      ],
     },
+
     footer: { credit: "Design & Programação por Marita.R", rights: "Todos os direitos reservados." },
   },
 };
