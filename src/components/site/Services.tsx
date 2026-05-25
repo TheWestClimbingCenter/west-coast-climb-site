@@ -14,7 +14,7 @@ import gRope from "@/assets/g-rope.jpg";
 export function Services() {
   const { t } = useI18n();
   const items = t.services.items;
-  const cards = [
+  const cards: Array<{ key: keyof typeof items; icon: typeof Mountain; img: string; span?: string }> = [
     { key: "indoor", icon: Mountain, img: gBoulder, span: "md:col-span-2 md:row-span-2" },
     { key: "classes", icon: GraduationCap, img: gClass },
     { key: "outdoor", icon: Trees, img: gOutdoor },
@@ -22,7 +22,7 @@ export function Services() {
     { key: "gear", icon: ShoppingBag, img: gGear },
     { key: "birthday", icon: PartyPopper, img: gMoon },
     { key: "rental", icon: Backpack, img: gRope },
-  ] as const;
+  ];
 
   return (
     <section id="services" className="relative py-24 sm:py-32 topo-bg">
