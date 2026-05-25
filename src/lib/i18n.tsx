@@ -42,8 +42,8 @@ export const translations = {
       p2: "From beginners to advanced climbers, our routes and boulders are designed for all levels and ages.",
       p3: "We focus on safety, community and progression. With modern equipment, certified systems and structured classes, we create a space where people can grow and challenge themselves.",
       p4: "Because climbing is not just about reaching the top — it's about the journey.",
-      foundersTitle: "Founded by climbers, for climbers",
-      foundersText: "The West was founded by two passionate climbers with a shared vision: building a strong climbing community on Portugal's west coast and creating a welcoming space for all levels.",
+      foundersTitle: "",
+      foundersText: "Founded by climbers, Nuno Soares and Nuno Garcia, The West Climbing Center was created to grow the climbing community in Peniche and promote a lifestyle that combines climbing and surfing on Portugal's west coast.",
       founders: [
         { name: "Nuno Soares", role: "Co-founder" },
         { name: "Nuno Garcia", role: "Co-founder" },
