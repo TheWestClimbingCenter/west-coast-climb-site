@@ -42,8 +42,8 @@ export const translations = {
       p2: "From beginners to advanced climbers, our routes and boulders are designed for all levels and ages.",
       p3: "We focus on safety, community and progression. With modern equipment, certified systems and structured classes, we create a space where people can grow and challenge themselves.",
       p4: "Because climbing is not just about reaching the top — it's about the journey.",
-      foundersTitle: "Founded by climbers, for climbers",
-      foundersText: "The West was founded by two passionate climbers with a shared vision: building a strong climbing community on Portugal's west coast and creating a welcoming space for all levels.",
+      foundersTitle: "",
+      foundersText: "Founded by climbers, Nuno Soares and Nuno Garcia, The West Climbing Center was created to grow the climbing community in Peniche and promote a lifestyle that combines climbing and surfing on Portugal's west coast.",
       founders: [
         { name: "Nuno Soares", role: "Co-founder" },
         { name: "Nuno Garcia", role: "Co-founder" },
@@ -195,8 +195,8 @@ export const translations = {
       p2: "Do iniciante ao escalador avançado, as nossas vias e boulders são pensados para todos os níveis e idades.",
       p3: "Focamo-nos em segurança, comunidade e progressão. Com equipamento moderno, sistemas certificados e aulas estruturadas, criamos um espaço onde as pessoas crescem e se desafiam.",
       p4: "Porque escalar não é só chegar ao topo — é o percurso.",
-      foundersTitle: "Fundado por escaladores, para escaladores",
-      foundersText: "O The West foi fundado por dois escaladores apaixonados com uma visão comum: criar uma comunidade forte de escalada na costa oeste e um espaço acolhedor para todos os níveis.",
+      foundersTitle: "",
+      foundersText: "Fundado por escaladores, Nuno Soares e Nuno Garcia, o The West Climbing Center foi criado para fazer crescer a comunidade de escalada em Peniche e promover um estilo de vida que combina escalada e surf na costa oeste de Portugal.",
       founders: [
         { name: "Nuno Soares", role: "Co-fundador" },
         { name: "Nuno Garcia", role: "Co-fundador" },
