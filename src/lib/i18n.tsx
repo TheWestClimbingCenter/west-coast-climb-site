@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useState, ReactNode } from "react
 
 export type Lang = "en" | "pt";
 
-type Dict = typeof translations.en;
+type Dict = (typeof translations)["en"];
 
 export const translations = {
   en: {
