@@ -73,61 +73,79 @@ export const translations = {
     },
     pricing: {
       title: "Pricing",
-      subtitle: "Memberships, day passes, classes and rentals.",
-      sections: [
+      subtitle: "Indoor, outdoor and rental equipment — straight from the gym.",
+      close: "Close",
+      footnote: "Prices may be subject to change. For up-to-date pricing, contact us directly.",
+      tabs: { indoor: "Indoor", outdoor: "Outdoor", rentals: "Rentals" },
+      birthday: { title: "Birthday Parties", text: "Pricing on request — contact us to plan your event." },
+      indoor: [
         {
-          name: "Day Passes",
+          name: "Day Pass",
           rows: [
-            ["Adult — full day", "€12"],
-            ["Student / under 18", "€9"],
-            ["Kids (under 12)", "€7"],
-            ["First visit (intro included)", "€15"],
+            ["Adult", "€11"],
+            ["Student", "€9.90"],
+            ["Child", "€8.90"],
+            ["Pack 10 + 1", "€89.90"],
           ],
         },
         {
-          name: "Multi-Entry Packs",
+          name: "Monthly Membership",
           rows: [
-            ["5 entries", "€55"],
-            ["10 entries", "€100"],
-            ["20 entries", "€180"],
+            ["Adult", "€45"],
+            ["Student", "€39.90"],
+            ["Child", "€35.90"],
+            ["Family (3 persons or more)", "€35.90 / person"],
           ],
         },
         {
-          name: "Memberships",
+          name: "Lessons",
           rows: [
-            ["Monthly — unlimited", "€55"],
-            ["Monthly — student", "€45"],
-            ["Annual — unlimited", "€550"],
-          ],
-        },
-        {
-          name: "Classes",
-          rows: [
-            ["Beginner course (4 sessions)", "€80"],
-            ["Group class — drop in", "€20"],
-            ["Private 1-on-1 (1h)", "€40"],
-            ["Kids class — monthly", "€55"],
-          ],
-        },
-        {
-          name: "Rentals",
-          rows: [
-            ["Climbing shoes", "€3"],
-            ["Harness", "€3"],
-            ["Full pack (shoes + harness + belay)", "€7"],
-          ],
-        },
-        {
-          name: "Outdoor & Extras",
-          rows: [
-            ["Outdoor guided session (½ day)", "from €45"],
-            ["Birthday party (up to 10 kids)", "from €150"],
+            ["1 Person (1 hour)", "€35"],
+            ["2 People (1 hour)", "€30 / person"],
+            ["3 People (1 hour)", "€25 / person"],
+            ["4 People (2 hours)", "€20 / person"],
           ],
         },
       ],
-      footnote: "Prices are indicative. For up-to-date pricing, contact us directly.",
-      close: "Close",
+      outdoor: [
+        {
+          name: "Outdoor Climbing with Guide",
+          rows: [
+            ["1 Person with gear included", "€49"],
+            ["1 Person without gear", "€45"],
+            ["1 Person with membership or without gear included", "€45"],
+            ["More than 4 people with gear included", "€40 / person"],
+          ],
+        },
+      ],
+      rentals: [
+        {
+          name: "Indoor Rental Equipment",
+          rows: [
+            ["Climbing Shoes", "€4"],
+            ["Harness", "€4"],
+            ["Rope", "€4"],
+            ["Belay Device (Gri-Gri)", "€3"],
+            ["Chalk Bag", "€2"],
+          ],
+        },
+        {
+          name: "Outdoor Rental Equipment",
+          note: "Cash deposit required for each item — refunded on gear return.",
+          rows: [
+            ["Climbing Shoes", "€12", "€50 deposit"],
+            ["Harness", "€8", "€25 deposit"],
+            ["Rope", "€15", "€90 deposit"],
+            ["Belay Device (Gri-Gri)", "€10", "€50 deposit"],
+            ["Helmet", "€6", "€20 deposit"],
+            ["6 / 12 Quickdraws", "€18 / €28", "€70 / €100 deposit"],
+            ["Lock Carabiner", "€4", "€20 deposit"],
+            ["All Gear (complete set)", "€73 / €82", "€300 deposit"],
+          ],
+        },
+      ],
     },
+
     footer: { credit: "Design & Programming by Marita.R", rights: "All rights reserved." },
   },
   pt: {
