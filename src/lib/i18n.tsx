@@ -35,10 +35,18 @@ export const translations = {
     },
     gallery: { eyebrow: "Inside The West", title: "A space built for climbers" },
     about: {
-      eyebrow: "Our story",
-      title: "Born on the west coast, built for the community",
-      p1: "Located in Peniche, The West is more than a gym — it's a meeting point for climbers of every level. We believe climbing is a lifestyle, and we've shaped a space that reflects that: high walls, modern boulders, and a community that pushes each other.",
-      p2: "From your first try to your hardest send, our team of passionate climbers is here. Safety, progression and good vibes — every single session.",
+      eyebrow: "About us",
+      title: "About The West Climbing Center",
+      subtitle: "Indoor climbing in the heart of Portugal's west coast — Peniche.",
+      p1: "The West Climbing Center is your destination to experience indoor climbing on Portugal's west coast. We believe climbing is more than a sport — it's a lifestyle. From first-timers to seasoned climbers, our routes and boulders welcome every level and every age.",
+      p2: "What sets us apart is our commitment to safety, community and fun. Our team of passionate climbers creates a welcoming environment where you can push your limits, learn new skills and build lasting friendships.",
+      p3: "Safety is our top priority — modern systems, certified gear and industry-leading standards. We run beginner classes and continuous support for advanced climbers. Because climbing isn't only about reaching the top — it's about the journey, the challenge, and the community that comes with it.",
+      foundersTitle: "Founded by climbers, for climbers",
+      foundersText: "The West was founded by two passionate climbers with a shared vision: build a strong climbing community on Portugal's west coast, combining high-quality indoor climbing with a welcoming, inclusive space for all levels.",
+      founders: [
+        { name: "Nuno Soares", role: "Co-founder" },
+        { name: "Nuno Garcia", role: "Co-founder" },
+      ],
       stats: [
         { value: "1500+", label: "Members" },
         { value: "12m", label: "Wall height" },
@@ -46,6 +54,7 @@ export const translations = {
         { value: "7", label: "Years climbing" },
       ],
     },
+
     faq: {
       eyebrow: "Good to know",
       title: "Frequently asked questions",
