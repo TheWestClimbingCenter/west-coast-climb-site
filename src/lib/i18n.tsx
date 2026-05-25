@@ -255,7 +255,7 @@ export const translations = {
     },
     footer: { credit: "Design & Programação por Marita.R", rights: "Todos os direitos reservados." },
   },
-} as const;
+};
 
 interface I18nCtx {
   lang: Lang;
