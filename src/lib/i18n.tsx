@@ -187,10 +187,18 @@ export const translations = {
     },
     gallery: { eyebrow: "Por dentro do The West", title: "Um espaço feito para escaladores" },
     about: {
-      eyebrow: "A nossa história",
-      title: "Nascidos na zona oeste, feitos para a comunidade",
-      p1: "Localizados em Peniche, o The West é mais do que um ginásio — é um ponto de encontro para escaladores de todos os níveis. Acreditamos que a escalada é um estilo de vida, e construímos um espaço que reflecte isso: paredes altas, boulders modernos e uma comunidade que se desafia.",
-      p2: "Da tua primeira tentativa ao teu projecto mais difícil, a nossa equipa de escaladores apaixonados está aqui. Segurança, progressão e bom ambiente — em cada sessão.",
+      eyebrow: "Sobre nós",
+      title: "Sobre o The West Climbing Center",
+      subtitle: "Escalada indoor no coração da costa oeste de Portugal — Peniche.",
+      p1: "O The West Climbing Center é o teu destino para viver a escalada indoor na costa oeste de Portugal. Acreditamos que escalar é mais do que um desporto — é um estilo de vida. Do principiante ao escalador experiente, as nossas vias e boulders recebem todos os níveis e idades.",
+      p2: "O que nos distingue é o compromisso com a segurança, a comunidade e a diversão. A nossa equipa de escaladores apaixonados cria um ambiente acolhedor onde podes ultrapassar limites, aprender novas técnicas e criar amizades duradouras.",
+      p3: "A segurança é a nossa prioridade — sistemas modernos, material certificado e os mais altos padrões da indústria. Temos aulas para iniciantes e acompanhamento contínuo para escaladores avançados. Porque escalar não é só chegar ao topo — é o percurso, o desafio e a comunidade que vem com ele.",
+      foundersTitle: "Fundado por escaladores, para escaladores",
+      foundersText: "O The West foi fundado por dois escaladores apaixonados com uma visão comum: criar uma comunidade forte de escalada na costa oeste, juntando escalada indoor de qualidade a um espaço acolhedor e inclusivo para todos os níveis.",
+      founders: [
+        { name: "Nuno Soares", role: "Co-fundador" },
+        { name: "Nuno Garcia", role: "Co-fundador" },
+      ],
       stats: [
         { value: "1500+", label: "Membros" },
         { value: "12m", label: "Altura da parede" },
