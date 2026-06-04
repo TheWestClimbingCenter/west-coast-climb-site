@@ -15,13 +15,15 @@ import gym1 from "@/assets/gym-1.jpg.asset.json";
 import gym2 from "@/assets/gym-2.jpg.asset.json";
 import gym3 from "@/assets/gym-3.jpg.asset.json";
 import gym4 from "@/assets/gym-4.jpg.asset.json";
+import moon1 from "@/assets/moon1.jpg.asset.json";
+import moon2 from "@/assets/moon2.jpg.asset.json";
 import { ImmersiveViewer } from "./ImmersiveViewer";
 
 export function Services() {
   const { t } = useI18n();
   const items = t.services.items;
 
-  const gymGallery = [gym1.url, gym2.url, gym3.url, gym4.url];
+  const gymGallery = [gym1.url, gym2.url, gym3.url, gym4.url, moon1.url, moon2.url];
 
   const cards: Array<{
     key: keyof typeof items;
