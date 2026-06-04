@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { X } from "lucide-react";
 
@@ -10,19 +10,36 @@ interface ImmersiveViewerProps {
   alt?: string;
 }
 
+const AUTOPLAY_MS = 5000;
+const RESUME_AFTER_MS = 8000;
+
 export function ImmersiveViewer({ images, startIndex = 0, open, onClose, alt = "" }: ImmersiveViewerProps) {
   const [index, setIndex] = useState(startIndex);
   const [showClose, setShowClose] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
   const touchStartX = useRef<number | null>(null);
+  const resumeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const pauseAutoplay = useCallback(() => {
+    setIsPlaying(false);
+    if (resumeTimer.current) clearTimeout(resumeTimer.current);
+    resumeTimer.current = setTimeout(() => setIsPlaying(true), RESUME_AFTER_MS);
+  }, []);
+
+  const next = useCallback(() => setIndex((i) => (i + 1) % images.length), [images.length]);
+  const prev = useCallback(() => setIndex((i) => (i - 1 + images.length) % images.length), [images.length]);
 
   useEffect(() => {
-    if (open) setIndex(startIndex);
+    if (open) {
+      setIndex(startIndex);
+      setIsPlaying(true);
+    }
   }, [open, startIndex]);
 
   useEffect(() => {
     if (!open) return;
     setShowClose(false);
-    const t = setTimeout(() => setShowClose(true), 500);
+    const t = setTimeout(() => setShowClose(true), 600);
     const prevOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     return () => {
@@ -35,12 +52,21 @@ export function ImmersiveViewer({ images, startIndex = 0, open, onClose, alt = "
     if (!open) return;
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
-      else if (e.key === "ArrowRight") setIndex((i) => (i + 1) % images.length);
-      else if (e.key === "ArrowLeft") setIndex((i) => (i - 1 + images.length) % images.length);
+      else if (e.key === "ArrowRight") { pauseAutoplay(); next(); }
+      else if (e.key === "ArrowLeft") { pauseAutoplay(); prev(); }
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [open, images.length, onClose]);
+  }, [open, next, prev, onClose, pauseAutoplay]);
+
+  // Autoplay
+  useEffect(() => {
+    if (!open || !isPlaying || images.length < 2) return;
+    const id = setInterval(next, AUTOPLAY_MS);
+    return () => clearInterval(id);
+  }, [open, isPlaying, images.length, next]);
+
+  useEffect(() => () => { if (resumeTimer.current) clearTimeout(resumeTimer.current); }, []);
 
   // Preload adjacent
   useEffect(() => {
@@ -53,14 +79,12 @@ export function ImmersiveViewer({ images, startIndex = 0, open, onClose, alt = "
 
   if (!open || typeof document === "undefined") return null;
 
-  const next = () => setIndex((i) => (i + 1) % images.length);
-  const prev = () => setIndex((i) => (i - 1 + images.length) % images.length);
-
   return createPortal(
     <div
       className="fixed inset-0 z-[100] bg-[#0a0a0a] animate-fade-in"
+      style={{ animationDuration: "500ms", animationTimingFunction: "cubic-bezier(0.4, 0, 0.2, 1)" }}
       onClick={onClose}
-      onTouchStart={(e) => (touchStartX.current = e.touches[0].clientX)}
+      onTouchStart={(e) => { touchStartX.current = e.touches[0].clientX; pauseAutoplay(); }}
       onTouchEnd={(e) => {
         if (touchStartX.current == null) return;
         const dx = e.changedTouches[0].clientX - touchStartX.current;
@@ -68,29 +92,28 @@ export function ImmersiveViewer({ images, startIndex = 0, open, onClose, alt = "
         touchStartX.current = null;
       }}
     >
-      {/* Click zones */}
       <button
         aria-label="Previous image"
-        onClick={(e) => { e.stopPropagation(); prev(); }}
+        onClick={(e) => { e.stopPropagation(); pauseAutoplay(); prev(); }}
         className="absolute left-0 top-0 h-full w-1/2 z-10 cursor-w-resize focus:outline-none"
       />
       <button
         aria-label="Next image"
-        onClick={(e) => { e.stopPropagation(); next(); }}
+        onClick={(e) => { e.stopPropagation(); pauseAutoplay(); next(); }}
         className="absolute right-0 top-0 h-full w-1/2 z-10 cursor-e-resize focus:outline-none"
       />
 
-      {/* Images stacked with crossfade */}
       <div className="absolute inset-0 flex items-center justify-center p-4 sm:p-8">
         {images.map((src, i) => (
           <img
             key={src}
             src={src}
             alt={`${alt} ${i + 1}`}
-            className="absolute max-h-full max-w-full object-contain transition-all duration-500 ease-out"
+            className="absolute max-h-full max-w-full object-contain"
             style={{
               opacity: i === index ? 1 : 0,
-              transform: i === index ? "scale(1)" : "scale(0.98)",
+              transform: i === index ? "scale(1)" : "scale(1.02)",
+              transition: "opacity 900ms cubic-bezier(0.4, 0, 0.2, 1), transform 1200ms cubic-bezier(0.4, 0, 0.2, 1)",
             }}
             draggable={false}
           />
@@ -100,9 +123,10 @@ export function ImmersiveViewer({ images, startIndex = 0, open, onClose, alt = "
       <button
         aria-label="Close"
         onClick={(e) => { e.stopPropagation(); onClose(); }}
-        className={`absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300 ${
+        className={`absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center text-white hover:bg-white/20 ${
           showClose ? "opacity-100" : "opacity-0"
         }`}
+        style={{ transition: "opacity 500ms cubic-bezier(0.4, 0, 0.2, 1), background-color 300ms ease" }}
       >
         <X className="w-5 h-5" />
       </button>
