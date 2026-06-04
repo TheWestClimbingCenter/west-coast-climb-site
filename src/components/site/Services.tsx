@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useI18n } from "@/lib/i18n";
 import {
   Mountain, GraduationCap, Trees, Dumbbell, ShoppingBag,
@@ -10,19 +11,35 @@ import gGym from "@/assets/g-gym.jpg";
 import gGear from "@/assets/g-gear.jpg";
 import gMoon from "@/assets/g-moonboard.jpg";
 import gRope from "@/assets/g-rope.jpg";
+import gym1 from "@/assets/gym-1.jpg.asset.json";
+import gym2 from "@/assets/gym-2.jpg.asset.json";
+import gym3 from "@/assets/gym-3.jpg.asset.json";
+import gym4 from "@/assets/gym-4.jpg.asset.json";
+import { ImmersiveViewer } from "./ImmersiveViewer";
 
 export function Services() {
   const { t } = useI18n();
   const items = t.services.items;
-  const cards: Array<{ key: keyof typeof items; icon: typeof Mountain; img: string; span?: string }> = [
+
+  const gymGallery = [gym1.url, gym2.url, gym3.url, gym4.url];
+
+  const cards: Array<{
+    key: keyof typeof items;
+    icon: typeof Mountain;
+    img: string;
+    span?: string;
+    gallery?: string[];
+  }> = [
     { key: "indoor", icon: Mountain, img: gBoulder, span: "md:col-span-2 md:row-span-2" },
     { key: "classes", icon: GraduationCap, img: gClass },
     { key: "outdoor", icon: Trees, img: gOutdoor },
-    { key: "gym", icon: Dumbbell, img: gGym },
+    { key: "gym", icon: Dumbbell, img: gym1.url, gallery: gymGallery },
     { key: "gear", icon: ShoppingBag, img: gGear },
     { key: "birthday", icon: PartyPopper, img: gMoon },
     { key: "rental", icon: Backpack, img: gRope },
   ];
+
+  const [viewer, setViewer] = useState<{ images: string[]; alt: string } | null>(null);
 
   return (
     <section id="services" className="relative py-24 sm:py-32 topo-bg">
@@ -69,12 +86,14 @@ export function Services() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 md:auto-rows-[220px]">
-          {cards.map(({ key, icon: Icon, img, span }) => {
+          {cards.map(({ key, icon: Icon, img, span, gallery }) => {
             const item = items[key as keyof typeof items];
+            const images = gallery ?? [img];
             return (
               <article
                 key={key}
-                className={`group relative overflow-hidden rounded-2xl bg-card border border-border shadow-sm hover:shadow-soft transition-all duration-500 ${span ?? ""}`}
+                onClick={() => setViewer({ images, alt: item.title })}
+                className={`group relative overflow-hidden rounded-2xl bg-card border border-border shadow-sm hover:shadow-soft transition-all duration-500 cursor-pointer ${span ?? ""}`}
               >
                 <img
                   src={img}
@@ -95,6 +114,13 @@ export function Services() {
           })}
         </div>
       </div>
+
+      <ImmersiveViewer
+        open={!!viewer}
+        images={viewer?.images ?? []}
+        alt={viewer?.alt ?? ""}
+        onClose={() => setViewer(null)}
+      />
     </section>
   );
 }
