@@ -21,6 +21,7 @@ import gearShop1 from "@/assets/gear-shop-1.jpg.asset.json";
 import gearShop2 from "@/assets/gear-shop-2.jpg.asset.json";
 import gearShop3 from "@/assets/gear-shop-3.jpg.asset.json";
 import gearShop5 from "@/assets/gear-shop-5.jpg.asset.json";
+import birthdayImg from "@/assets/birthday.jpg.asset.json";
 import { ImmersiveViewer } from "./ImmersiveViewer";
 
 export function Services() {
@@ -42,7 +43,7 @@ export function Services() {
     { key: "outdoor", icon: Trees, img: gOutdoor },
     { key: "gym", icon: Dumbbell, img: gym1.url, gallery: gymGallery },
     { key: "gear", icon: ShoppingBag, img: gearShop2.url, gallery: gearGallery },
-    { key: "birthday", icon: PartyPopper, img: gMoon },
+    { key: "birthday", icon: PartyPopper, img: birthdayImg.url },
     { key: "rental", icon: Backpack, img: gRope },
   ];
 
