@@ -43,7 +43,7 @@ export function Services() {
     { key: "outdoor", icon: Trees, img: gOutdoor },
     { key: "gym", icon: Dumbbell, img: gym1.url, gallery: gymGallery },
     { key: "gear", icon: ShoppingBag, img: gearShop2.url, gallery: gearGallery },
-    { key: "birthday", icon: PartyPopper, img: gMoon },
+    { key: "birthday", icon: PartyPopper, img: birthdayImg.url },
     { key: "rental", icon: Backpack, img: gRope },
   ];
 
