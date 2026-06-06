@@ -5,7 +5,7 @@ import {
   PartyPopper, Backpack
 } from "lucide-react";
 import gBoulder from "@/assets/g-boulder.jpg";
-import gClass from "@/assets/g-class.jpg";
+import classesImg from "@/assets/classes.jpg.asset.json";
 import gOutdoor from "@/assets/g-outdoor.jpg";
 import gGym from "@/assets/g-gym.jpg";
 import gGear from "@/assets/g-gear.jpg";
@@ -50,7 +50,7 @@ export function Services() {
     gallery?: string[];
   }> = [
     { key: "indoor", icon: Mountain, img: gBoulder, span: "md:col-span-2 md:row-span-2" },
-    { key: "classes", icon: GraduationCap, img: gClass },
+    { key: "classes", icon: GraduationCap, img: classesImg.url, gallery: [classesImg.url] },
     { key: "outdoor", icon: Trees, img: outC.url, gallery: outdoorGallery },
     { key: "gym", icon: Dumbbell, img: gym1.url, gallery: gymGallery },
     { key: "gear", icon: ShoppingBag, img: gearShop2.url, gallery: gearGallery },
