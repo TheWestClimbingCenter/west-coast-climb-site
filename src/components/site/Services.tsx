@@ -40,6 +40,7 @@ export function Services() {
 
   const gymGallery = [gym1.url, gym2.url, gym3.url, gym4.url, moon1.url, moon2.url];
   const gearGallery = [gearShop2.url, gearShop3.url, gearShop1.url, gearShop5.url];
+  const outdoorGallery = [outC.url, out059.url, outC1.url, out1.url, out2b.url, out3.url, out4.url, out5.url, outC2.url, out2.url];
 
   const cards: Array<{
     key: keyof typeof items;
@@ -50,7 +51,7 @@ export function Services() {
   }> = [
     { key: "indoor", icon: Mountain, img: gBoulder, span: "md:col-span-2 md:row-span-2" },
     { key: "classes", icon: GraduationCap, img: gClass },
-    { key: "outdoor", icon: Trees, img: gOutdoor },
+    { key: "outdoor", icon: Trees, img: outC.url, gallery: outdoorGallery },
     { key: "gym", icon: Dumbbell, img: gym1.url, gallery: gymGallery },
     { key: "gear", icon: ShoppingBag, img: gearShop2.url, gallery: gearGallery },
     { key: "birthday", icon: PartyPopper, img: birthdayImg.url },
