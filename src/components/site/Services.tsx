@@ -12,6 +12,9 @@ import indoor2 from "@/assets/indoor_2.jpg.asset.json";
 import indoor3 from "@/assets/indoor_3.jpg.asset.json";
 import indoor4 from "@/assets/indoor_4.jpg.asset.json";
 import indoor5 from "@/assets/indoor_5.jpg.asset.json";
+import indoor3b from "@/assets/indoor_3b.jpg.asset.json";
+import indoor9 from "@/assets/indoor_9.jpg.asset.json";
+import indoorMoon from "@/assets/indoor_moon.jpg.asset.json";
 import gym1 from "@/assets/gym-1.jpg.asset.json";
 import gym2 from "@/assets/gym-2.jpg.asset.json";
 import gym3 from "@/assets/gym-3.jpg.asset.json";
@@ -42,7 +45,7 @@ export function Services() {
   const gymGallery = [gym1.url, gym2.url, gym3.url, gym4.url, moon1.url, moon2.url];
   const gearGallery = [gearShop2.url, gearShop3.url, gearShop1.url, gearShop5.url];
   const outdoorGallery = [outC.url, out059.url, outC1.url, out1.url, out2b.url, out3.url, out4.url, out5.url, outC2.url, out2.url];
-  const indoorGallery = [indoorStart.url, indoor1.url, indoor2.url, indoor3.url, indoor4.url, indoor5.url];
+  const indoorGallery = [indoorStart.url, indoor1.url, indoor2.url, indoor3.url, indoor4.url, indoor5.url, indoor3b.url, indoor9.url, indoorMoon.url];
 
   const cards: Array<{
     key: keyof typeof items;
