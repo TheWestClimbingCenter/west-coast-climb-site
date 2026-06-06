@@ -5,7 +5,7 @@ import {
   PartyPopper, Backpack
 } from "lucide-react";
 import gBoulder from "@/assets/g-boulder.jpg";
-import gClass from "@/assets/g-class.jpg";
+import classesImg from "@/assets/classes.jpg.asset.json";
 import gOutdoor from "@/assets/g-outdoor.jpg";
 import gGym from "@/assets/g-gym.jpg";
 import gGear from "@/assets/g-gear.jpg";
