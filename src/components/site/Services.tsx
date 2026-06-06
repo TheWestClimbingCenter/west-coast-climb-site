@@ -17,6 +17,16 @@ import gym3 from "@/assets/gym-3.jpg.asset.json";
 import gym4 from "@/assets/gym-4.jpg.asset.json";
 import moon1 from "@/assets/moon1.jpg.asset.json";
 import moon2 from "@/assets/moon2.jpg.asset.json";
+import out1 from "@/assets/outdoor_1.jpg.asset.json";
+import out2 from "@/assets/outdoor_2.jpg.asset.json";
+import outC from "@/assets/outdoor_climbing.jpg.asset.json";
+import outC1 from "@/assets/outdoor_climbing_1.jpg.asset.json";
+import outC2 from "@/assets/outdoor_climbing-2.jpg.asset.json";
+import out059 from "@/assets/outdoor1-059.jpg.asset.json";
+import out2b from "@/assets/outdoor2.jpg.asset.json";
+import out3 from "@/assets/outdoor3.jpg.asset.json";
+import out4 from "@/assets/outdoor4.jpg.asset.json";
+import out5 from "@/assets/outdoor5.jpg.asset.json";
 import gearShop1 from "@/assets/gear-shop-1.jpg.asset.json";
 import gearShop2 from "@/assets/gear-shop-2.jpg.asset.json";
 import gearShop3 from "@/assets/gear-shop-3.jpg.asset.json";
@@ -30,6 +40,7 @@ export function Services() {
 
   const gymGallery = [gym1.url, gym2.url, gym3.url, gym4.url, moon1.url, moon2.url];
   const gearGallery = [gearShop2.url, gearShop3.url, gearShop1.url, gearShop5.url];
+  const outdoorGallery = [outC.url, out059.url, outC1.url, out1.url, out2b.url, out3.url, out4.url, out5.url, outC2.url, out2.url];
 
   const cards: Array<{
     key: keyof typeof items;
@@ -40,7 +51,7 @@ export function Services() {
   }> = [
     { key: "indoor", icon: Mountain, img: gBoulder, span: "md:col-span-2 md:row-span-2" },
     { key: "classes", icon: GraduationCap, img: gClass },
-    { key: "outdoor", icon: Trees, img: gOutdoor },
+    { key: "outdoor", icon: Trees, img: outC.url, gallery: outdoorGallery },
     { key: "gym", icon: Dumbbell, img: gym1.url, gallery: gymGallery },
     { key: "gear", icon: ShoppingBag, img: gearShop2.url, gallery: gearGallery },
     { key: "birthday", icon: PartyPopper, img: birthdayImg.url },
