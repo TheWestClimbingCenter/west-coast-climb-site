@@ -21,6 +21,7 @@ import gearShop1 from "@/assets/gear-shop-1.jpg.asset.json";
 import gearShop2 from "@/assets/gear-shop-2.jpg.asset.json";
 import gearShop3 from "@/assets/gear-shop-3.jpg.asset.json";
 import gearShop5 from "@/assets/gear-shop-5.jpg.asset.json";
+import birthdayImg from "@/assets/birthday.jpg.asset.json";
 import { ImmersiveViewer } from "./ImmersiveViewer";
 
 export function Services() {
