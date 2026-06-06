@@ -4,13 +4,14 @@ import {
   Mountain, GraduationCap, Trees, Dumbbell, ShoppingBag,
   PartyPopper, Backpack
 } from "lucide-react";
-import gBoulder from "@/assets/g-boulder.jpg";
 import classesImg from "@/assets/classes.jpg.asset.json";
-import gOutdoor from "@/assets/g-outdoor.jpg";
-import gGym from "@/assets/g-gym.jpg";
-import gGear from "@/assets/g-gear.jpg";
-import gMoon from "@/assets/g-moonboard.jpg";
 import gRope from "@/assets/g-rope.jpg";
+import indoorStart from "@/assets/indoor_start.jpg.asset.json";
+import indoor1 from "@/assets/indoor_1.jpg.asset.json";
+import indoor2 from "@/assets/indoor_2.jpg.asset.json";
+import indoor3 from "@/assets/indoor_3.jpg.asset.json";
+import indoor4 from "@/assets/indoor_4.jpg.asset.json";
+import indoor5 from "@/assets/indoor_5.jpg.asset.json";
 import gym1 from "@/assets/gym-1.jpg.asset.json";
 import gym2 from "@/assets/gym-2.jpg.asset.json";
 import gym3 from "@/assets/gym-3.jpg.asset.json";
