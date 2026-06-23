@@ -5,7 +5,11 @@ import {
   PartyPopper, Backpack
 } from "lucide-react";
 import classesImg from "@/assets/classes.jpg.asset.json";
-import gRope from "@/assets/g-rope.jpg";
+import rental1 from "@/assets/rental_1.jpg.asset.json";
+import rental2 from "@/assets/rental_2.jpg.asset.json";
+import rental3 from "@/assets/rental_3.jpg.asset.json";
+import rental4 from "@/assets/rental_4.jpg.asset.json";
+import rental5 from "@/assets/rental_5.jpg.asset.json";
 import indoorStart from "@/assets/indoor_start.jpg.asset.json";
 import indoor1 from "@/assets/indoor_1.jpg.asset.json";
 import indoor2 from "@/assets/indoor_2.jpg.asset.json";
@@ -45,6 +49,7 @@ export function Services() {
   const gymGallery = [gym1.url, gym2.url, gym3.url, gym4.url, moon1.url, moon2.url];
   const gearGallery = [gearShop2.url, gearShop3.url, gearShop1.url, gearShop5.url];
   const outdoorGallery = [outC.url, out059.url, outC1.url, out1.url, out2b.url, out3.url, out4.url, out5.url, outC2.url, out2.url];
+  const rentalGallery = [rental1.url, rental2.url, rental3.url, rental4.url, rental5.url];
   const indoorGallery = [indoorStart.url, indoor1.url, indoor2.url, indoor3.url, indoor4.url, indoor5.url, indoor3b.url, indoor9.url, indoorMoon.url];
 
   const cards: Array<{
@@ -60,7 +65,7 @@ export function Services() {
     { key: "gym", icon: Dumbbell, img: gym1.url, gallery: gymGallery },
     { key: "gear", icon: ShoppingBag, img: gearShop2.url, gallery: gearGallery },
     { key: "birthday", icon: PartyPopper, img: birthdayImg.url },
-    { key: "rental", icon: Backpack, img: gRope },
+    { key: "rental", icon: Backpack, img: rental1.url, gallery: rentalGallery },
   ];
 
   const [viewer, setViewer] = useState<{ images: string[]; alt: string } | null>(null);
