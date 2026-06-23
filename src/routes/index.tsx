@@ -5,7 +5,7 @@ import { Header } from "@/components/site/Header";
 import { Hero } from "@/components/site/Hero";
 import { Services } from "@/components/site/Services";
 import { PricingCta } from "@/components/site/PricingCta";
-import { Gallery } from "@/components/site/Gallery";
+
 import { About } from "@/components/site/About";
 import { Faq } from "@/components/site/Faq";
 import { ContactFooter } from "@/components/site/ContactFooter";
@@ -61,7 +61,7 @@ function Index() {
           <Hero onOpenPricing={() => setPricingOpen(true)} />
           <Services />
           <PricingCta onOpenPricing={() => setPricingOpen(true)} />
-          <Gallery />
+          
           <About />
           <Faq />
         </main>
