@@ -35,6 +35,9 @@ import out2b from "@/assets/outdoor2.jpg.asset.json";
 import out3 from "@/assets/outdoor3.jpg.asset.json";
 import out4 from "@/assets/outdoor4.jpg.asset.json";
 import out5 from "@/assets/outdoor5.jpg.asset.json";
+import outMain from "@/assets/outdoor-main.jpg.asset.json";
+import outExtra1 from "@/assets/outdoor-extra-1.jpg.asset.json";
+import outExtra2 from "@/assets/outdoor-extra-2.jpg.asset.json";
 import gearShop1 from "@/assets/gear-shop-1.jpg.asset.json";
 import gearShop2 from "@/assets/gear-shop-2.jpg.asset.json";
 import gearShop3 from "@/assets/gear-shop-3.jpg.asset.json";
@@ -48,7 +51,7 @@ export function Services() {
 
   const gymGallery = [gym1.url, gym2.url, gym3.url, gym4.url, moon1.url, moon2.url];
   const gearGallery = [gearShop2.url, gearShop3.url, gearShop1.url, gearShop5.url];
-  const outdoorGallery = [outC.url, out059.url, outC1.url, out1.url, out2b.url, out3.url, out4.url, out5.url, outC2.url, out2.url];
+  const outdoorGallery = [outMain.url, outExtra1.url, outExtra2.url, outC.url, out059.url, outC1.url, out1.url, out2b.url, out3.url, out4.url, out5.url, outC2.url, out2.url];
   const rentalGallery = [rental1.url, rental2.url, rental3.url, rental4.url, rental5.url];
   const indoorGallery = [indoorStart.url, indoor1.url, indoor2.url, indoor3.url, indoor4.url, indoor5.url, indoor3b.url, indoor9.url, indoorMoon.url];
 
@@ -61,7 +64,7 @@ export function Services() {
   }> = [
     { key: "indoor", icon: Mountain, img: indoorStart.url, gallery: indoorGallery, span: "md:col-span-2 md:row-span-2" },
     { key: "classes", icon: GraduationCap, img: classesImg.url, gallery: [classesImg.url] },
-    { key: "outdoor", icon: Trees, img: outC.url, gallery: outdoorGallery },
+    { key: "outdoor", icon: Trees, img: outMain.url, gallery: outdoorGallery },
     { key: "gym", icon: Dumbbell, img: gym1.url, gallery: gymGallery },
     { key: "gear", icon: ShoppingBag, img: gearShop2.url, gallery: gearGallery },
     { key: "birthday", icon: PartyPopper, img: birthdayImg.url },
