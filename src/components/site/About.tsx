@@ -1,5 +1,5 @@
 import { useI18n } from "@/lib/i18n";
-import gGym from "@/assets/g-gym.jpg";
+import halleDrin from "@/assets/halle-drin.jpg.asset.json";
 import nunoSoares from "@/assets/nuno-soares.jpg.asset.json";
 import nunoGarcia from "@/assets/nuno-garcia.jpg.asset.json";
 
@@ -15,7 +15,7 @@ export function About() {
             <div className="grid grid-cols-2 auto-rows-[120px] sm:auto-rows-[150px] gap-3">
               <div className="col-span-2 row-span-3 rounded-2xl overflow-hidden group">
                 <img
-                  src={gGym}
+                  src={halleDrin.url}
                   alt="Indoor climbing gym in Peniche, Portugal"
                   loading="lazy"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
