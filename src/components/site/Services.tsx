@@ -49,6 +49,7 @@ export function Services() {
   const gymGallery = [gym1.url, gym2.url, gym3.url, gym4.url, moon1.url, moon2.url];
   const gearGallery = [gearShop2.url, gearShop3.url, gearShop1.url, gearShop5.url];
   const outdoorGallery = [outC.url, out059.url, outC1.url, out1.url, out2b.url, out3.url, out4.url, out5.url, outC2.url, out2.url];
+  const rentalGallery = [rental1.url, rental2.url, rental3.url, rental4.url, rental5.url];
   const indoorGallery = [indoorStart.url, indoor1.url, indoor2.url, indoor3.url, indoor4.url, indoor5.url, indoor3b.url, indoor9.url, indoorMoon.url];
 
   const cards: Array<{
