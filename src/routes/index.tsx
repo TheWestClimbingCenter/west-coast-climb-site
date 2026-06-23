@@ -61,7 +61,7 @@ function Index() {
           <Hero onOpenPricing={() => setPricingOpen(true)} />
           <Services />
           <PricingCta onOpenPricing={() => setPricingOpen(true)} />
-          <Gallery />
+          
           <About />
           <Faq />
         </main>
