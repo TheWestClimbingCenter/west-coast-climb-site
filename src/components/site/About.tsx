@@ -1,7 +1,7 @@
 import { useI18n } from "@/lib/i18n";
-import gOutdoor from "@/assets/g-outdoor.jpg";
-import gClass from "@/assets/g-class.jpg";
 import gGym from "@/assets/g-gym.jpg";
+import nunoSoares from "@/assets/nuno-soares.jpg.asset.json";
+import nunoGarcia from "@/assets/nuno-garcia.jpg.asset.json";
 
 export function About() {
   const { t } = useI18n();
@@ -23,7 +23,7 @@ export function About() {
               </div>
               <div className="row-span-2 rounded-2xl overflow-hidden group">
                 <img
-                  src={gOutdoor}
+                  src={nunoSoares.url}
                   alt="Nuno Soares, co-founder of The West Climbing Center"
                   loading="lazy"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
@@ -31,7 +31,7 @@ export function About() {
               </div>
               <div className="row-span-2 rounded-2xl overflow-hidden group">
                 <img
-                  src={gClass}
+                  src={nunoGarcia.url}
                   alt="Nuno Garcia, co-founder of The West Climbing Center"
                   loading="lazy"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
