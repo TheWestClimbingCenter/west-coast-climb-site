@@ -82,33 +82,30 @@ export function Services() {
         </div>
 
         {/* Level indicator */}
-        <div className="mb-12 rounded-2xl border border-border bg-card p-5 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center gap-5 sm:gap-8">
-          <p className="text-sm font-semibold text-foreground sm:max-w-[180px]">
+        <div className="mb-12 rounded-2xl border border-border bg-card p-5 sm:p-6 flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-8">
+          <p className="text-sm font-semibold text-foreground sm:max-w-[180px] shrink-0">
             {t.services.levels.caption}
           </p>
-          <div className="flex-1 w-full flex items-center gap-3">
+          <div className="flex-1 w-full min-w-0 grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-3 sm:items-center">
             {(["beginner", "intermediate", "advanced"] as const).map((lvl, i) => (
-              <div key={lvl} className="flex-1 flex items-center gap-3">
-                <div className="flex-1">
-                  <div className="flex items-center justify-between mb-1.5">
-                    <span className="text-xs font-bold text-foreground">{t.services.levels[lvl]}</span>
-                    <div className="flex gap-0.5">
-                      {Array.from({ length: 3 }).map((_, j) => (
-                        <Mountain
-                          key={j}
-                          className={`w-3 h-3 ${j <= i ? "text-primary fill-primary" : "text-border"}`}
-                        />
-                      ))}
-                    </div>
-                  </div>
-                  <div className="h-1.5 rounded-full bg-muted overflow-hidden">
-                    <div
-                      className="h-full bg-gradient-to-r from-primary/60 to-primary rounded-full"
-                      style={{ width: `${(i + 1) * 33.3}%`, animation: `reveal 1.2s ${i * 0.15}s ease-out both` }}
-                    />
+              <div key={lvl} className="min-w-0">
+                <div className="flex items-center justify-between mb-1.5 gap-2">
+                  <span className="text-xs font-bold text-foreground truncate">{t.services.levels[lvl]}</span>
+                  <div className="flex gap-0.5 shrink-0">
+                    {Array.from({ length: 3 }).map((_, j) => (
+                      <Mountain
+                        key={j}
+                        className={`w-3 h-3 ${j <= i ? "text-primary fill-primary" : "text-border"}`}
+                      />
+                    ))}
                   </div>
                 </div>
-                {i < 2 && <span className="text-border">→</span>}
+                <div className="h-1.5 rounded-full bg-muted overflow-hidden">
+                  <div
+                    className="h-full bg-gradient-to-r from-primary/60 to-primary rounded-full"
+                    style={{ width: `${(i + 1) * 33.3}%`, animation: `reveal 1.2s ${i * 0.15}s ease-out both` }}
+                  />
+                </div>
               </div>
             ))}
           </div>
