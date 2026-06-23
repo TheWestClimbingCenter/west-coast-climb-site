@@ -23,7 +23,7 @@ export function About() {
               </div>
               <div className="row-span-2 rounded-2xl overflow-hidden group">
                 <img
-                  src={gOutdoor}
+                  src={nunoSoares.url}
                   alt="Nuno Soares, co-founder of The West Climbing Center"
                   loading="lazy"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
