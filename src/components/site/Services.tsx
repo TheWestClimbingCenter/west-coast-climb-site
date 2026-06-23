@@ -65,7 +65,7 @@ export function Services() {
     { key: "gym", icon: Dumbbell, img: gym1.url, gallery: gymGallery },
     { key: "gear", icon: ShoppingBag, img: gearShop2.url, gallery: gearGallery },
     { key: "birthday", icon: PartyPopper, img: birthdayImg.url },
-    { key: "rental", icon: Backpack, img: gRope },
+    { key: "rental", icon: Backpack, img: rental1.url, gallery: rentalGallery },
   ];
 
   const [viewer, setViewer] = useState<{ images: string[]; alt: string } | null>(null);
