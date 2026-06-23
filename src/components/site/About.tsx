@@ -1,7 +1,7 @@
 import { useI18n } from "@/lib/i18n";
-import gOutdoor from "@/assets/g-outdoor.jpg";
-import gClass from "@/assets/g-class.jpg";
 import gGym from "@/assets/g-gym.jpg";
+import nunoSoares from "@/assets/nuno-soares.jpg.asset.json";
+import nunoGarcia from "@/assets/nuno-garcia.jpg.asset.json";
 
 export function About() {
   const { t } = useI18n();
