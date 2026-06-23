@@ -5,7 +5,11 @@ import {
   PartyPopper, Backpack
 } from "lucide-react";
 import classesImg from "@/assets/classes.jpg.asset.json";
-import gRope from "@/assets/g-rope.jpg";
+import rental1 from "@/assets/rental_1.jpg.asset.json";
+import rental2 from "@/assets/rental_2.jpg.asset.json";
+import rental3 from "@/assets/rental_3.jpg.asset.json";
+import rental4 from "@/assets/rental_4.jpg.asset.json";
+import rental5 from "@/assets/rental_5.jpg.asset.json";
 import indoorStart from "@/assets/indoor_start.jpg.asset.json";
 import indoor1 from "@/assets/indoor_1.jpg.asset.json";
 import indoor2 from "@/assets/indoor_2.jpg.asset.json";
