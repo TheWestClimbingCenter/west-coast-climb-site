@@ -182,7 +182,7 @@ export const translations = {
         gear: { title: "Loja de Material", desc: "Uma pequena loja no espaço com sapatilhas, arneses, magnésio, sacos de magnésio, hangboards, cordas e outros essenciais de escalada." },
         birthday: { title: "Festas de Aniversário", desc: "Festas inesquecíveis para crianças e adultos, sempre supervisionadas." },
         rental: { title: "Aluguer de Material", desc: "Sapatos, arnês e descensores — tudo o que precisas para começar hoje." },
-        bar: { title: "Zona de Bar", desc: "Café, bebidas alcoólicas e não alcoólicas, barras de cereais, batatas fritas e tostas — um espaço descontraído para recuperar energias." },
+        bar: { title: "Zona de Bar", desc: "Bebidas e snacks — um espaço descontraído para recuperar energias." },
       },
     },
     pricingCta: {
