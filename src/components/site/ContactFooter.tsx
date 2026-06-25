@@ -1,4 +1,4 @@
-import { Mail, MapPin, Clock, Instagram, Facebook, MessageCircle } from "lucide-react";
+import { Mail, MapPin, Clock, Instagram, Phone, MessageCircle } from "lucide-react";
 import { useI18n } from "@/lib/i18n";
 import logoWhite from "@/assets/logo-white.png";
 
@@ -44,14 +44,24 @@ export function ContactFooter() {
               </div>
 
               <div className="flex gap-4">
+                <Phone className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
+                <div>
+                  <div className="text-xs uppercase tracking-widest text-white/50">{t.contact.phone ?? "Phone"}</div>
+                  <a href="tel:+351916871870" className="mt-1 text-white hover:text-primary block">
+                    +351 916 871 870
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex gap-4">
                 <Instagram className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
                 <div>
                   <div className="text-xs uppercase tracking-widest text-white/50">{t.contact.social}</div>
                   <div className="mt-1 flex gap-4">
-                    <a href="https://www.instagram.com/" target="_blank" rel="noopener" className="text-white hover:text-primary">
+                    <a href="https://www.instagram.com/thewestclimbingcenter" target="_blank" rel="noopener" className="text-white hover:text-primary">
                       Instagram
                     </a>
-                    <a href="https://www.facebook.com/" target="_blank" rel="noopener" className="text-white hover:text-primary">
+                    <a href="https://www.facebook.com/people/The-West-Climbing-Center/61556832601969/" target="_blank" rel="noopener" className="text-white hover:text-primary">
                       Facebook
                     </a>
                   </div>
@@ -59,15 +69,25 @@ export function ContactFooter() {
               </div>
             </div>
 
-            <a
-              href="https://wa.me/351000000000"
-              target="_blank"
-              rel="noopener"
-              className="mt-10 inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-bold text-primary-foreground hover:brightness-110 transition"
-            >
-              <MessageCircle className="w-4 h-4" />
-              {t.contact.whatsapp}
-            </a>
+            <div className="mt-10 flex flex-wrap gap-3">
+              <a
+                href="https://wa.me/351916871870"
+                target="_blank"
+                rel="noopener"
+                className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-bold text-primary-foreground hover:brightness-110 transition"
+              >
+                <MessageCircle className="w-4 h-4" />
+                {t.contact.whatsapp}
+              </a>
+              <a
+                href="tel:+351916871870"
+                className="inline-flex items-center gap-2 rounded-full border border-white/20 px-6 py-3 text-sm font-bold text-white hover:bg-white/10 transition"
+              >
+                <Phone className="w-4 h-4" />
+                {t.contact.call ?? "Call"}
+              </a>
+            </div>
+
           </div>
 
           <div className="rounded-2xl overflow-hidden border border-white/10 min-h-[360px] lg:min-h-full">
@@ -94,7 +114,7 @@ export function ContactFooter() {
 
       {/* Floating WhatsApp */}
       <a
-        href="https://wa.me/351000000000"
+        href="https://wa.me/351916871870"
         target="_blank"
         rel="noopener"
         aria-label="WhatsApp"
