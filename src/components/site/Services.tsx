@@ -57,6 +57,7 @@ export function Services() {
   const outdoorGallery = [outMain.url, outExtra1.url, outExtra2.url, outC.url, out059.url, outC1.url, out1.url, out2b.url, out3.url, out4.url, out5.url, outC2.url, out2.url];
   const rentalGallery = [rental1.url, rental2.url, rental3.url, rental4.url, rental5.url];
   const indoorGallery = [indoorStart.url, indoor1.url, indoor2.url, indoor3.url, indoor4.url, indoor5.url, indoor3b.url, indoor9.url, indoorMoon.url];
+  const barGallery = [bar3.url, bar2.url, bar1.url];
 
   const cards: Array<{
     key: keyof typeof items;
@@ -70,6 +71,7 @@ export function Services() {
     { key: "outdoor", icon: Trees, img: outMain.url, gallery: outdoorGallery },
     { key: "gym", icon: Dumbbell, img: gym1.url, gallery: gymGallery },
     { key: "gear", icon: ShoppingBag, img: gearShop2.url, gallery: gearGallery },
+    { key: "bar", icon: Coffee, img: bar3.url, gallery: barGallery },
     { key: "birthday", icon: PartyPopper, img: birthdayImg.url },
     { key: "rental", icon: Backpack, img: rental1.url, gallery: rentalGallery },
   ];
