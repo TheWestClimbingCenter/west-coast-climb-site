@@ -88,15 +88,6 @@ export function ContactFooter() {
               </a>
             </div>
 
-            <a
-              href="https://wa.me/351000000000"
-              target="_blank"
-              rel="noopener"
-              className="mt-10 inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-bold text-primary-foreground hover:brightness-110 transition"
-            >
-              <MessageCircle className="w-4 h-4" />
-              {t.contact.whatsapp}
-            </a>
           </div>
 
           <div className="rounded-2xl overflow-hidden border border-white/10 min-h-[360px] lg:min-h-full">
