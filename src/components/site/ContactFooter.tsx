@@ -114,7 +114,7 @@ export function ContactFooter() {
 
       {/* Floating WhatsApp */}
       <a
-        href="https://wa.me/351000000000"
+        href="https://wa.me/351916871870"
         target="_blank"
         rel="noopener"
         aria-label="WhatsApp"
