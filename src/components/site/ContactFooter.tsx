@@ -1,4 +1,4 @@
-import { Mail, MapPin, Clock, Instagram, Facebook, MessageCircle } from "lucide-react";
+import { Mail, MapPin, Clock, Instagram, Phone, MessageCircle } from "lucide-react";
 import { useI18n } from "@/lib/i18n";
 import logoWhite from "@/assets/logo-white.png";
 
