@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useI18n } from "@/lib/i18n";
 import {
   Mountain, GraduationCap, Trees, Dumbbell, ShoppingBag,
-  PartyPopper, Backpack
+  PartyPopper, Backpack, Coffee
 } from "lucide-react";
 import classesImg from "@/assets/classes.jpg.asset.json";
 import rental1 from "@/assets/rental_1.jpg.asset.json";
