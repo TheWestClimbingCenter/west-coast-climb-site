@@ -26,7 +26,7 @@ export const translations = {
         gear: { title: "Gear Shop", desc: "A small in-house shop with shoes, harnesses, chalk, chalk bags, hangboards, ropes and other climbing essentials." },
         birthday: { title: "Birthday Parties", desc: "Unforgettable parties for kids and adults, fully supervised by our team." },
         rental: { title: "Rental Equipment", desc: "Shoes, harness and belay devices — everything you need to start today." },
-        bar: { title: "Bar Area", desc: "Coffee, alcoholic and non-alcoholic drinks, snack bars, chips and toasts — a relaxed spot to refuel between sessions." },
+        bar: { title: "Bar Area", desc: "Drinks and snacks — a relaxed spot to refuel between sessions." },
       },
     },
     pricingCta: {
