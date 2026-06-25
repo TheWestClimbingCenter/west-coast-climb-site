@@ -81,6 +81,8 @@ export const translations = {
       email: "Email",
       social: "Follow us",
       whatsapp: "WhatsApp us",
+      call: "Call",
+      phone: "Phone",
     },
     pricing: {
       title: "Pricing",
