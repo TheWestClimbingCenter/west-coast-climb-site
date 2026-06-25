@@ -70,10 +70,10 @@ export function Services() {
     { key: "classes", icon: GraduationCap, img: classesImg.url, gallery: [classesImg.url] },
     { key: "outdoor", icon: Trees, img: outMain.url, gallery: outdoorGallery },
     { key: "gym", icon: Dumbbell, img: gym1.url, gallery: gymGallery },
+    { key: "rental", icon: Backpack, img: rental1.url, gallery: rentalGallery },
     { key: "gear", icon: ShoppingBag, img: gearShop2.url, gallery: gearGallery },
     { key: "bar", icon: Coffee, img: bar3.url, gallery: barGallery },
     { key: "birthday", icon: PartyPopper, img: birthdayImg.url },
-    { key: "rental", icon: Backpack, img: rental1.url, gallery: rentalGallery },
   ];
 
   const [viewer, setViewer] = useState<{ images: string[]; alt: string } | null>(null);
