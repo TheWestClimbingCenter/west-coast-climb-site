@@ -1,6 +1,6 @@
 import { useI18n } from "@/lib/i18n";
 import { ArrowRight, MapPin } from "lucide-react";
-import hero from "@/assets/hero.jpg";
+import hero from "@/assets/hero-new.png.asset.json";
 
 interface Props {
   onOpenPricing: () => void;
