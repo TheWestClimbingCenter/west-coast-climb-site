@@ -19,6 +19,7 @@ export function Hero({ onOpenPricing }: Props) {
       />
       <div className="absolute inset-0 bg-gradient-to-b from-navy/40 via-navy/60 to-navy" />
       <div className="absolute inset-0 bg-gradient-to-r from-navy/70 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_40%,rgba(255,255,255,0.10)_0%,transparent_55%)] pointer-events-none" />
 
       <div className="relative container-pad pb-20 sm:pb-28 pt-32 text-white">
         <div className="max-w-3xl">
