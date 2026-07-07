@@ -77,6 +77,7 @@ export const translations = {
       hours: "Opening hours",
       hoursWeek: "Mon – Fri: 14:00 – 22:00",
       hoursWeekend: "Sat – Sun: 14:00 – 20:30",
+      hoursHolidays: "Holidays: 14:00 – 20:30",
       address: "Address",
       email: "Email",
       social: "Follow us",
