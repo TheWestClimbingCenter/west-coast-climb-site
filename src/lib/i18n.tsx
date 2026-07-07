@@ -68,7 +68,7 @@ export const translations = {
         { q: "Is climbing safe?", a: "Safety is our top priority. All gear is industry-certified and our staff supervises the gym at all times." },
         { q: "Do you guide outdoor climbing?", a: "Yes — we run guided outdoor sessions on the west coast's best crags, for all levels." },
         { q: "Can I book a birthday party?", a: "Of course. We host parties for kids and adults — get in touch to plan your event." },
-        { q: "What are the opening hours?", a: "Monday to Friday: 14:00–22:00. Saturday and Sunday: 14:00–20:30." },
+        { q: "What are the opening hours?", a: "Monday to Friday: 14:00–22:00. Saturday and Sunday: 14:00–20:30. Holidays: 14:00–20:30." }
       ],
     },
     contact: {
