@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Menu, X, Globe } from "lucide-react";
 import { useI18n, type Lang } from "@/lib/i18n";
-import logo from "@/assets/logo.png";
 import logoWhite from "@/assets/logo-white.png";
 
 interface HeaderProps {
