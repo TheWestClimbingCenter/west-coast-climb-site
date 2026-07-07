@@ -1,6 +1,6 @@
 import { useI18n } from "@/lib/i18n";
 import { ArrowRight, MapPin } from "lucide-react";
-import hero from "@/assets/hero.jpg";
+import hero from "@/assets/hero-new.png.asset.json";
 
 interface Props {
   onOpenPricing: () => void;
@@ -11,7 +11,7 @@ export function Hero({ onOpenPricing }: Props) {
   return (
     <section id="home" className="relative min-h-[100svh] flex items-end overflow-hidden">
       <img
-        src={hero}
+        src={hero.url}
         alt="Climber on indoor wall at The West Climbing Center"
         className="absolute inset-0 w-full h-full object-cover scale-105"
         width={1920}
