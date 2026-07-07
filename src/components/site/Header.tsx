@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Menu, X, Globe } from "lucide-react";
 import { useI18n, type Lang } from "@/lib/i18n";
-import logo from "@/assets/logo.png";
 import logoWhite from "@/assets/logo-white.png";
 
 interface HeaderProps {
@@ -36,7 +35,7 @@ export function Header({ onOpenPricing }: HeaderProps) {
       <div className="container-pad flex items-center justify-between h-16 sm:h-20">
         <Link to="/" className="flex items-center gap-2">
           <img
-            src={scrolled ? logoWhite : logoWhite}
+            src={logoWhite}
             alt="The West Climbing Center"
             className="h-9 sm:h-11 w-auto"
           />
