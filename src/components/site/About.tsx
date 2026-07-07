@@ -1,5 +1,5 @@
 import { useI18n } from "@/lib/i18n";
-import halleDrin from "@/assets/halle-drin.jpg.asset.json";
+import aboutMain from "@/assets/about-main.jpg.asset.json";
 import nunoSoares from "@/assets/nuno-soares.jpg.asset.json";
 import nunoGarcia from "@/assets/nuno-garcia.jpg.asset.json";
 
