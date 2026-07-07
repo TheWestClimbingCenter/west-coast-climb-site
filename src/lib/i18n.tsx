@@ -68,7 +68,7 @@ export const translations = {
         { q: "Is climbing safe?", a: "Safety is our top priority. All gear is industry-certified and our staff supervises the gym at all times." },
         { q: "Do you guide outdoor climbing?", a: "Yes — we run guided outdoor sessions on the west coast's best crags, for all levels." },
         { q: "Can I book a birthday party?", a: "Of course. We host parties for kids and adults — get in touch to plan your event." },
-        { q: "What are the opening hours?", a: "Monday to Friday: 14:00–22:00. Saturday and Sunday: 14:00–20:30." },
+        { q: "What are the opening hours?", a: "Monday to Friday: 14:00–22:00. Saturday and Sunday: 14:00–20:30. Holidays: 14:00–20:30." }
       ],
     },
     contact: {
@@ -77,6 +77,7 @@ export const translations = {
       hours: "Opening hours",
       hoursWeek: "Mon – Fri: 14:00 – 22:00",
       hoursWeekend: "Sat – Sun: 14:00 – 20:30",
+      hoursHolidays: "Holidays: 14:00 – 20:30",
       address: "Address",
       email: "Email",
       social: "Follow us",
@@ -223,7 +224,7 @@ export const translations = {
         { q: "A escalada é segura?", a: "A segurança é a nossa prioridade. Todo o material é certificado e a nossa equipa supervisiona o ginásio sempre." },
         { q: "Guiam escalada outdoor?", a: "Sim — fazemos sessões guiadas nas melhores falésias da zona oeste, para todos os níveis." },
         { q: "Posso marcar uma festa de aniversário?", a: "Claro. Fazemos festas para crianças e adultos — contacta-nos para planear o teu evento." },
-        { q: "Qual o horário?", a: "Segunda a Sexta: 14:00–22:00. Sábado e Domingo: 14:00–20:30." },
+        { q: "Qual o horário?", a: "Segunda a Sexta: 14:00–22:00. Sábado e Domingo: 14:00–20:30. Feriados: 14:00–20:30." },
       ],
     },
     contact: {
@@ -232,6 +233,7 @@ export const translations = {
       hours: "Horário",
       hoursWeek: "Seg – Sex: 14:00 – 22:00",
       hoursWeekend: "Sáb – Dom: 14:00 – 20:30",
+      hoursHolidays: "Feriados: 14:00 – 20:30",
       address: "Morada",
       email: "Email",
       social: "Segue-nos",

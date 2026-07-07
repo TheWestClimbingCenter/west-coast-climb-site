@@ -21,6 +21,7 @@ export function ContactFooter() {
                   <div className="text-xs uppercase tracking-widest text-white/50">{t.contact.hours}</div>
                   <div className="mt-1 text-white">{t.contact.hoursWeek}</div>
                   <div className="text-white">{t.contact.hoursWeekend}</div>
+                  <div className="text-white">{t.contact.hoursHolidays}</div>
                 </div>
               </div>
 
