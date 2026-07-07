@@ -224,7 +224,7 @@ export const translations = {
         { q: "A escalada é segura?", a: "A segurança é a nossa prioridade. Todo o material é certificado e a nossa equipa supervisiona o ginásio sempre." },
         { q: "Guiam escalada outdoor?", a: "Sim — fazemos sessões guiadas nas melhores falésias da zona oeste, para todos os níveis." },
         { q: "Posso marcar uma festa de aniversário?", a: "Claro. Fazemos festas para crianças e adultos — contacta-nos para planear o teu evento." },
-        { q: "Qual o horário?", a: "Segunda a Sexta: 14:00–22:00. Sábado e Domingo: 14:00–20:30." },
+        { q: "Qual o horário?", a: "Segunda a Sexta: 14:00–22:00. Sábado e Domingo: 14:00–20:30. Feriados: 14:00–20:30." },
       ],
     },
     contact: {
