@@ -58,9 +58,11 @@ export function About() {
             </div>
 
             <div className="mt-16 max-w-xl">
-              <h3 className="text-2xl sm:text-3xl text-foreground">
-                {t.about.foundersTitle}
-              </h3>
+              {t.about.foundersTitle && (
+                <h3 className="text-2xl sm:text-3xl text-foreground">
+                  {t.about.foundersTitle}
+                </h3>
+              )}
               <p className="mt-4 text-lg text-foreground/85 leading-relaxed">
                 {t.about.foundersText}
               </p>
