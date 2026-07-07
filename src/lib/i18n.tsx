@@ -233,6 +233,7 @@ export const translations = {
       hours: "Horário",
       hoursWeek: "Seg – Sex: 14:00 – 22:00",
       hoursWeekend: "Sáb – Dom: 14:00 – 20:30",
+      hoursHolidays: "Feriados: 14:00 – 20:30",
       address: "Morada",
       email: "Email",
       social: "Segue-nos",
