@@ -23,10 +23,15 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: "The West Climbing Center — Indoor Climbing in Peniche" },
       { property: "og:description", content: "Indoor & outdoor climbing on Portugal's west coast. Boulder, ropes, classes and community in Peniche." },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/" },
+      { property: "og:url", content: "https://west-coast-climb-site.lovable.app/" },
+      { property: "og:image", content: "https://west-coast-climb-site.lovable.app/__l5e/assets-v1/07ff4083-2a20-4368-a6ab-c588e55bcde2/hero-new.png" },
+      { property: "og:image:width", content: "1920" },
+      { property: "og:image:height", content: "1080" },
+      { property: "og:image:alt", content: "Climber on indoor wall at The West Climbing Center" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: "https://west-coast-climb-site.lovable.app/__l5e/assets-v1/07ff4083-2a20-4368-a6ab-c588e55bcde2/hero-new.png" },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [{ rel: "canonical", href: "https://west-coast-climb-site.lovable.app/" }],
     scripts: [
       {
         type: "application/ld+json",
