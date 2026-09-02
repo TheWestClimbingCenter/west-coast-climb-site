@@ -14,5 +14,8 @@ export default defineConfig({
   },
   tanstackStart: {
     server: { entry: "server" },
+    // Static site for GitHub Pages: prerender every route to HTML at build time.
+    pages: [{ path: "/" }],
+    prerender: { enabled: true, autoStaticPathsDiscovery: false },
   },
 });
