@@ -37,140 +37,191 @@ jobs:
       - name: Build project
         run: bun run build
 
-      - name: Download Lovable assets
+      - name: Download and rewrite Lovable assets
         run: |
           set -e
 
-          ASSET_DIR="./.output/public/assets"
-          mkdir -p "$ASSET_DIR"
-
-          BASE_URL="https://west-coast-climb-site.lovable.app"
-
           echo "========================================"
-          echo "DOWNLOADING LOVABLE ASSETS"
+          echo "LOVABLE ASSET FIX"
           echo "========================================"
 
-          download_asset() {
-            local id="$1"
-            local filename="$2"
+          mkdir -p ./.output/public/assets
 
-            echo "Downloading: $filename"
+          python3 <<'PY'
+          import re
+          import subprocess
+          from pathlib import Path
+          from urllib.parse import urlparse
 
-            curl -L --fail --silent --show-error \
-              "$BASE_URL/__l5e/assets-v1/$id/$filename" \
-              -o "$ASSET_DIR/$filename"
-          }
+          public_dir = Path("./.output/public")
+          assets_dir = public_dir / "assets"
 
-          download_asset \
-            "07ff4083-2a20-4368-a6ab-c588e55bcde2" \
-            "hero-new.png"
+          # Search all generated JS/CSS/HTML files.
+          files = []
+          for ext in ("*.js", "*.css", "*.html"):
+              files.extend(public_dir.rglob(ext))
 
-          download_asset \
-            "7c15491c-38e7-4924-a48f-d0d18579c10c" \
-            "classes.jpg"
+          # Find Lovable asset URLs.
+          pattern = re.compile(
+              r'(https?://[^"\'\s<>()]+)?'
+              r'(/__l5e/assets-v1/[^"\'\s<>()]+)'
+          )
 
-          download_asset \
-            "04d31829-1209-49d7-972a-25b1a060d68e" \
-            "rental_1.jpg"
+          found = {}
 
-          download_asset \
-            "c0494975-4377-47cb-ae2d-af96e50fc" \
-            "rental_2.jpg"
+          for file in files:
+              try:
+                  text = file.read_text(encoding="utf-8")
+              except UnicodeDecodeError:
+                  continue
 
-          download_asset \
-            "82d78f7f-6945-4e6f-bbfa-065b3445f3a2" \
-            "rental_3.jpg"
+              for match in pattern.finditer(text):
+                  full_url = match.group(0)
 
-          download_asset \
-            "9f8793a7-2692-45a9-9ab3-ce3608fcafb6" \
-            "rental_4.jpg"
+                  # Remove trailing punctuation that may be part of JS/HTML.
+                  full_url = full_url.rstrip('.,;:)]}')
 
-          download_asset \
-            "7b21be1e-726b-42ad-9ccb-9933822" \
-            "rental_5.jpg"
+                  if full_url.startswith("/"):
+                      full_url = "https://west-coast-climb-site.lovable.app" + full_url
+
+                  parsed = urlparse(full_url)
+                  path = parsed.path
+
+                  filename = Path(path).name
+
+                  # Only process actual image files.
+                  if not re.search(
+                      r'\.(jpg|jpeg|png|webp|gif|svg|avif)$',
+                      filename,
+                      re.IGNORECASE
+                  ):
+                      continue
+
+                  found[full_url] = filename
+
+          print()
+          print("Found Lovable assets:")
+          print()
+
+          if not found:
+              print("No Lovable assets found.")
+              raise SystemExit(0)
+
+          for url, filename in found.items():
+              print(f"  {filename}")
+              print(f"  {url}")
+              print()
+
+          # Download every unique asset.
+          for url, filename in found.items():
+              destination = assets_dir / filename
+
+              print(f"Downloading {filename}...")
+
+              result = subprocess.run(
+                  [
+                      "curl",
+                      "-L",
+                      "--fail",
+                      "--silent",
+                      "--show-error",
+                      url,
+                      "-o",
+                      str(destination),
+                  ],
+                  text=True,
+              )
+
+              if result.returncode != 0:
+                  print(f"ERROR downloading: {url}")
+                  raise SystemExit(result.returncode)
+
+              if not destination.exists() or destination.stat().st_size == 0:
+                  print(f"ERROR: downloaded file is empty: {destination}")
+                  raise SystemExit(1)
+
+          # Replace Lovable URLs with local GitHub Pages URLs.
+          print()
+          print("Rewriting asset references...")
+
+          for file in files:
+              try:
+                  text = file.read_text(encoding="utf-8")
+              except UnicodeDecodeError:
+                  continue
+
+              original = text
+
+              for url, filename in found.items():
+                  text = text.replace(url, f"/assets/{filename}")
+
+                  # Also replace the relative Lovable path in case
+                  # the generated code did not contain the full domain.
+                  relative_path = urlparse(url).path
+                  text = text.replace(
+                      relative_path,
+                      f"/assets/{filename}"
+                  )
+
+              if text != original:
+                  file.write_text(text, encoding="utf-8")
+                  print(f"Updated: {file}")
+
+          print()
+          print("Asset processing complete.")
+          PY
 
           echo ""
           echo "========================================"
-          echo "DOWNLOADED ASSETS"
+          echo "LOCAL ASSETS"
           echo "========================================"
 
-          find "$ASSET_DIR" -type f | sort
+          find ./.output/public/assets -type f | sort
 
-      - name: Inspect build output
+          echo ""
+          echo "========================================"
+          echo "IMAGE COUNT"
+          echo "========================================"
+
+          find ./.output/public/assets -type f \
+            \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.webp" -o -iname "*.gif" -o -iname "*.svg" \) \
+            | wc -l
+
+      - name: Verify no Lovable asset URLs remain
         run: |
-          echo ""
           echo "========================================"
-          echo "BUILD OUTPUT"
+          echo "CHECKING FOR REMAINING LOVABLE ASSETS"
           echo "========================================"
 
-          echo ""
-          echo "--- PUBLIC FILES ---"
-          find ./.output/public -type f | sort
+          if grep -RniE '/__l5e/assets-v1/' ./.output/public \
+            --include="*.js" \
+            --include="*.css" \
+            --include="*.html"; then
 
-          echo ""
-          echo "--- IMAGE FILES ---"
-          find ./.output/public -type f \
-            \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.webp" -o -iname "*.svg" -o -iname "*.gif" \) \
+            echo ""
+            echo "WARNING: Lovable asset references still exist."
+            echo "The deployment will continue, but some assets may still be external."
+
+          else
+
+            echo ""
+            echo "SUCCESS: No Lovable asset URLs remain."
+
+          fi
+
+      - name: Verify local image files
+        run: |
+          echo "========================================"
+          echo "VERIFYING IMAGE FILES"
+          echo "========================================"
+
+          find ./.output/public/assets -type f \
+            \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.webp" -o -iname "*.gif" -o -iname "*.svg" \) \
             -print
 
           echo ""
-          echo "--- IMAGE REFERENCES ---"
-          grep -RoiE '.{0,100}/__l5e/assets-v1/.{0,200}' \
-            ./.output/public/assets/*.js | head -100 || true
-
-          echo ""
-          echo "========================================"
-          echo "CHECK COMPLETE"
-          echo "========================================"
-
-      - name: Rewrite Lovable asset URLs
-        run: |
-          set -e
-
-          echo "========================================"
-          echo "REWRITING LOVABLE ASSET URLS"
-          echo "========================================"
-
-          find ./.output/public/assets -type f -name "*.js" -print0 | while IFS= read -r -d '' file; do
-
-            sed -i \
-              's#https://west-coast-climb-site\.lovable\.app/__l5e/assets-v1/07ff4083-2a20-4368-a6ab-c588e55bcde2/hero-new\.png#/assets/hero-new.png#g' \
-              "$file"
-
-            sed -i \
-              's#/__l5e/assets-v1/07ff4083-2a20-4368-a6ab-c588e55bcde2/hero-new\.png#/assets/hero-new.png#g' \
-              "$file"
-
-            sed -i \
-              's#/__l5e/assets-v1/7c15491c-38e7-4924-a48f-d0d18579c10c/classes\.jpg#/assets/classes.jpg#g' \
-              "$file"
-
-            sed -i \
-              's#/__l5e/assets-v1/04d31829-1209-49d7-972a-25b1a060d68e/rental_1\.jpg#/assets/rental_1.jpg#g' \
-              "$file"
-
-            sed -i \
-              's#/__l5e/assets-v1/c0494975-4377-47cb-ae2d-af96e50fc[^"]*/rental_2\.jpg#/assets/rental_2.jpg#g' \
-              "$file"
-
-            sed -i \
-              's#/__l5e/assets-v1/82d78f7f-6945-4e6f-bbfa-065b3445f3a2/rental_3\.jpg#/assets/rental_3.jpg#g' \
-              "$file"
-
-            sed -i \
-              's#/__l5e/assets-v1/9f8793a7-2692-45a9-9ab3-ce3608fcafb6/rental_4\.jpg#/assets/rental_4.jpg#g' \
-              "$file"
-
-            sed -i \
-              's#/__l5e/assets-v1/7b21be1e-726b-42ad-9ccb-9933822[^"]*/rental_5\.jpg#/assets/rental_5.jpg#g' \
-              "$file"
-
-          done
-
-          echo ""
-          echo "Remaining Lovable asset references:"
-          grep -RoiE '/__l5e/assets-v1/.{0,200}' \
-            ./.output/public/assets/*.js | head -100 || true
+          echo "File sizes:"
+          du -ah ./.output/public/assets | sort -h
 
       - name: SPA fallback for GitHub Pages
         run: |
