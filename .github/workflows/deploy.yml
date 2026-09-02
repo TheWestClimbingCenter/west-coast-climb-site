@@ -37,44 +37,144 @@ jobs:
       - name: Build project
         run: bun run build
 
-      - name: Inspect asset references
+      - name: Download Lovable assets
         run: |
+          set -e
+
+          ASSET_DIR="./.output/public/assets"
+          mkdir -p "$ASSET_DIR"
+
+          BASE_URL="https://west-coast-climb-site.lovable.app"
+
           echo "========================================"
-          echo "ASSET REFERENCES"
-          echo "========================================"
-
-          echo ""
-          echo "--- hero ---"
-          grep -RoiE '.{0,150}hero.{0,200}' ./.output/public/assets/*.js | head -30 || true
-
-          echo ""
-          echo "--- logo ---"
-          grep -RoiE '.{0,150}logo.{0,200}' ./.output/public/assets/*.js | head -30 || true
-
-          echo ""
-          echo "--- jpg/png ---"
-          grep -RoiE '.{0,100}\.(jpg|jpeg|png|webp|svg).{0,150}' \
-            ./.output/public/assets/*.js | head -50 || true
-
-          echo ""
-          echo "--- assets paths ---"
-          grep -RoiE '.{0,100}/assets/.{0,200}' \
-            ./.output/public/assets/*.js | head -50 || true
-
-          echo ""
-          echo "========================================"
-          echo "PUBLIC FILES"
+          echo "DOWNLOADING LOVABLE ASSETS"
           echo "========================================"
 
+          download_asset() {
+            local id="$1"
+            local filename="$2"
+
+            echo "Downloading: $filename"
+
+            curl -L --fail --silent --show-error \
+              "$BASE_URL/__l5e/assets-v1/$id/$filename" \
+              -o "$ASSET_DIR/$filename"
+          }
+
+          download_asset \
+            "07ff4083-2a20-4368-a6ab-c588e55bcde2" \
+            "hero-new.png"
+
+          download_asset \
+            "7c15491c-38e7-4924-a48f-d0d18579c10c" \
+            "classes.jpg"
+
+          download_asset \
+            "04d31829-1209-49d7-972a-25b1a060d68e" \
+            "rental_1.jpg"
+
+          download_asset \
+            "c0494975-4377-47cb-ae2d-af96e50fc" \
+            "rental_2.jpg"
+
+          download_asset \
+            "82d78f7f-6945-4e6f-bbfa-065b3445f3a2" \
+            "rental_3.jpg"
+
+          download_asset \
+            "9f8793a7-2692-45a9-9ab3-ce3608fcafb6" \
+            "rental_4.jpg"
+
+          download_asset \
+            "7b21be1e-726b-42ad-9ccb-9933822" \
+            "rental_5.jpg"
+
+          echo ""
+          echo "========================================"
+          echo "DOWNLOADED ASSETS"
+          echo "========================================"
+
+          find "$ASSET_DIR" -type f | sort
+
+      - name: Inspect build output
+        run: |
+          echo ""
+          echo "========================================"
+          echo "BUILD OUTPUT"
+          echo "========================================"
+
+          echo ""
+          echo "--- PUBLIC FILES ---"
           find ./.output/public -type f | sort
+
+          echo ""
+          echo "--- IMAGE FILES ---"
+          find ./.output/public -type f \
+            \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.webp" -o -iname "*.svg" -o -iname "*.gif" \) \
+            -print
+
+          echo ""
+          echo "--- IMAGE REFERENCES ---"
+          grep -RoiE '.{0,100}/__l5e/assets-v1/.{0,200}' \
+            ./.output/public/assets/*.js | head -100 || true
 
           echo ""
           echo "========================================"
           echo "CHECK COMPLETE"
           echo "========================================"
 
+      - name: Rewrite Lovable asset URLs
+        run: |
+          set -e
+
+          echo "========================================"
+          echo "REWRITING LOVABLE ASSET URLS"
+          echo "========================================"
+
+          find ./.output/public/assets -type f -name "*.js" -print0 | while IFS= read -r -d '' file; do
+
+            sed -i \
+              's#https://west-coast-climb-site\.lovable\.app/__l5e/assets-v1/07ff4083-2a20-4368-a6ab-c588e55bcde2/hero-new\.png#/assets/hero-new.png#g' \
+              "$file"
+
+            sed -i \
+              's#/__l5e/assets-v1/07ff4083-2a20-4368-a6ab-c588e55bcde2/hero-new\.png#/assets/hero-new.png#g' \
+              "$file"
+
+            sed -i \
+              's#/__l5e/assets-v1/7c15491c-38e7-4924-a48f-d0d18579c10c/classes\.jpg#/assets/classes.jpg#g' \
+              "$file"
+
+            sed -i \
+              's#/__l5e/assets-v1/04d31829-1209-49d7-972a-25b1a060d68e/rental_1\.jpg#/assets/rental_1.jpg#g' \
+              "$file"
+
+            sed -i \
+              's#/__l5e/assets-v1/c0494975-4377-47cb-ae2d-af96e50fc[^"]*/rental_2\.jpg#/assets/rental_2.jpg#g' \
+              "$file"
+
+            sed -i \
+              's#/__l5e/assets-v1/82d78f7f-6945-4e6f-bbfa-065b3445f3a2/rental_3\.jpg#/assets/rental_3.jpg#g' \
+              "$file"
+
+            sed -i \
+              's#/__l5e/assets-v1/9f8793a7-2692-45a9-9ab3-ce3608fcafb6/rental_4\.jpg#/assets/rental_4.jpg#g' \
+              "$file"
+
+            sed -i \
+              's#/__l5e/assets-v1/7b21be1e-726b-42ad-9ccb-9933822[^"]*/rental_5\.jpg#/assets/rental_5.jpg#g' \
+              "$file"
+
+          done
+
+          echo ""
+          echo "Remaining Lovable asset references:"
+          grep -RoiE '/__l5e/assets-v1/.{0,200}' \
+            ./.output/public/assets/*.js | head -100 || true
+
       - name: SPA fallback for GitHub Pages
-        run: cp ./.output/public/index.html ./.output/public/404.html
+        run: |
+          cp ./.output/public/index.html ./.output/public/404.html
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
