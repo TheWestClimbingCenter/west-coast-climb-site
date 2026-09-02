@@ -35,13 +35,16 @@ jobs:
       - name: Build project
         run: bun run build
 
+      - name: SPA fallback for GitHub Pages
+        run: cp ./dist/client/index.html ./dist/client/404.html
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './.output/public'
+          path: './dist/client'
 
       - name: Deploy to GitHub Pages
         id: deployment
