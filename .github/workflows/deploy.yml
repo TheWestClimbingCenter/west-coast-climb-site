@@ -37,113 +37,36 @@ jobs:
       - name: Build project
         run: bun run build
 
-      - name: Inspect build output
+      - name: Inspect asset references
         run: |
-          echo ""
           echo "========================================"
-          echo "BUILD OUTPUT"
-          echo "========================================"
-
-          echo ""
-          echo "--- .output/public directory ---"
-          find ./.output/public -maxdepth 3 -type f | sort
-
-          echo ""
-          echo "--- File sizes ---"
-          du -ah ./.output/public | sort -h
-
-          echo ""
-          echo "--- HTML files ---"
-          find ./.output/public -type f \( -name "*.html" -o -name "*.htm" \) -print
-
-          echo ""
-          echo "--- Image files ---"
-          find ./.output/public -type f \
-            \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.webp" -o -iname "*.svg" -o -iname "*.gif" \) \
-            -print
-
-          echo ""
-          echo "--- JavaScript files ---"
-          find ./.output/public -type f -name "*.js" -print
-
-
-      - name: Inspect JavaScript asset paths
-        run: |
-          echo ""
-          echo "========================================"
-          echo "IMAGE/ASSET REFERENCES IN JAVASCRIPT"
+          echo "ASSET REFERENCES"
           echo "========================================"
 
           echo ""
-          echo "--- JPG references ---"
-          grep -RohE '["'\''][^"'\'']*\.jpg[^"'\'']*["'\'']' ./.output/public/assets/*.js || true
+          echo "--- hero ---"
+          grep -RoiE '.{0,150}hero.{0,200}' ./.output/public/assets/*.js | head -30 || true
 
           echo ""
-          echo "--- PNG references ---"
-          grep -RohE '["'\''][^"'\'']*\.png[^"'\'']*["'\'']' ./.output/public/assets/*.js || true
+          echo "--- logo ---"
+          grep -RoiE '.{0,150}logo.{0,200}' ./.output/public/assets/*.js | head -30 || true
 
           echo ""
-          echo "--- WebP references ---"
-          grep -RohE '["'\''][^"'\'']*\.webp[^"'\'']*["'\'']' ./.output/public/assets/*.js || true
+          echo "--- jpg/png ---"
+          grep -RoiE '.{0,100}\.(jpg|jpeg|png|webp|svg).{0,150}' \
+            ./.output/public/assets/*.js | head -50 || true
 
           echo ""
-          echo "--- /assets/ references ---"
-          grep -RohE '["'\''][^"'\'']*/assets/[^"'\'']*["'\'']' ./.output/public/assets/*.js | head -100 || true
-
-          echo ""
-          echo "--- hero/logo references ---"
-          grep -RoiE '.{0,100}(hero|logo).{0,150}' ./.output/public/assets/*.js | head -100 || true
-
-
-
-          echo ""
-          echo "--- CSS files ---"
-          find ./.output/public -type f -name "*.css" -print
+          echo "--- assets paths ---"
+          grep -RoiE '.{0,100}/assets/.{0,200}' \
+            ./.output/public/assets/*.js | head -50 || true
 
           echo ""
           echo "========================================"
-          echo "INDEX.HTML"
+          echo "PUBLIC FILES"
           echo "========================================"
 
-          if [ ! -f ./.output/public/index.html ]; then
-            echo "ERROR: index.html does not exist!"
-            exit 1
-          fi
-
-          echo ""
-          echo "--- index.html ---"
-          cat ./.output/public/index.html
-
-          echo ""
-          echo "========================================"
-          echo "IMAGE REFERENCES IN HTML"
-          echo "========================================"
-
-          grep -oE '((src|href)=["'\''][^"'\'']+|url\([^)]*\))' \
-            ./.output/public/index.html || true
-
-          echo ""
-          echo "========================================"
-          echo "ASSET PATH REFERENCES"
-          echo "========================================"
-
-          grep -oE '(/assets/[^"'\'' )]+|assets/[^"'\'' )]+)' \
-            ./.output/public/index.html | sort -u || true
-
-          echo ""
-          echo "========================================"
-          echo "CHECKING REFERENCED ASSETS"
-          echo "========================================"
-
-          for asset in $(grep -oE '/assets/[^"'\'' )]+' ./.output/public/index.html | sort -u); do
-            clean_asset="${asset#/}"
-
-            if [ -f "./.output/public/$clean_asset" ]; then
-              echo "OK: $asset"
-            else
-              echo "MISSING: $asset"
-            fi
-          done
+          find ./.output/public -type f | sort
 
           echo ""
           echo "========================================"
@@ -159,7 +82,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './.output/public'
+          path: "./.output/public"
 
       - name: Deploy to GitHub Pages
         id: deployment
