@@ -66,6 +66,36 @@ jobs:
           echo "--- JavaScript files ---"
           find ./.output/public -type f -name "*.js" -print
 
+
+      - name: Inspect JavaScript asset paths
+        run: |
+          echo ""
+          echo "========================================"
+          echo "IMAGE/ASSET REFERENCES IN JAVASCRIPT"
+          echo "========================================"
+
+          echo ""
+          echo "--- JPG references ---"
+          grep -RohE '["'\''][^"'\'']*\.jpg[^"'\'']*["'\'']' ./.output/public/assets/*.js || true
+
+          echo ""
+          echo "--- PNG references ---"
+          grep -RohE '["'\''][^"'\'']*\.png[^"'\'']*["'\'']' ./.output/public/assets/*.js || true
+
+          echo ""
+          echo "--- WebP references ---"
+          grep -RohE '["'\''][^"'\'']*\.webp[^"'\'']*["'\'']' ./.output/public/assets/*.js || true
+
+          echo ""
+          echo "--- /assets/ references ---"
+          grep -RohE '["'\''][^"'\'']*/assets/[^"'\'']*["'\'']' ./.output/public/assets/*.js | head -100 || true
+
+          echo ""
+          echo "--- hero/logo references ---"
+          grep -RoiE '.{0,100}(hero|logo).{0,150}' ./.output/public/assets/*.js | head -100 || true
+
+
+
           echo ""
           echo "--- CSS files ---"
           find ./.output/public -type f -name "*.css" -print
