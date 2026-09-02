@@ -37,18 +37,88 @@ jobs:
       - name: Build project
         run: bun run build
 
-      - name: Verify build output
+      - name: Inspect build output
         run: |
-          echo "--- .output/public tree ---"
-          find ./.output/public -maxdepth 2 -type f | sort
+          echo ""
+          echo "========================================"
+          echo "BUILD OUTPUT"
+          echo "========================================"
 
-          echo "--- index.html candidates ---"
-          find ./.output/public -name index.html | sort
+          echo ""
+          echo "--- .output/public directory ---"
+          find ./.output/public -maxdepth 3 -type f | sort
+
+          echo ""
+          echo "--- File sizes ---"
+          du -ah ./.output/public | sort -h
+
+          echo ""
+          echo "--- HTML files ---"
+          find ./.output/public -type f \( -name "*.html" -o -name "*.htm" \) -print
+
+          echo ""
+          echo "--- Image files ---"
+          find ./.output/public -type f \
+            \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.webp" -o -iname "*.svg" -o -iname "*.gif" \) \
+            -print
+
+          echo ""
+          echo "--- JavaScript files ---"
+          find ./.output/public -type f -name "*.js" -print
+
+          echo ""
+          echo "--- CSS files ---"
+          find ./.output/public -type f -name "*.css" -print
+
+          echo ""
+          echo "========================================"
+          echo "INDEX.HTML"
+          echo "========================================"
 
           if [ ! -f ./.output/public/index.html ]; then
-            echo "ERROR: .output/public/index.html was not generated."
+            echo "ERROR: index.html does not exist!"
             exit 1
           fi
+
+          echo ""
+          echo "--- index.html ---"
+          cat ./.output/public/index.html
+
+          echo ""
+          echo "========================================"
+          echo "IMAGE REFERENCES IN HTML"
+          echo "========================================"
+
+          grep -oE '((src|href)=["'\''][^"'\'']+|url\([^)]*\))' \
+            ./.output/public/index.html || true
+
+          echo ""
+          echo "========================================"
+          echo "ASSET PATH REFERENCES"
+          echo "========================================"
+
+          grep -oE '(/assets/[^"'\'' )]+|assets/[^"'\'' )]+)' \
+            ./.output/public/index.html | sort -u || true
+
+          echo ""
+          echo "========================================"
+          echo "CHECKING REFERENCED ASSETS"
+          echo "========================================"
+
+          for asset in $(grep -oE '/assets/[^"'\'' )]+' ./.output/public/index.html | sort -u); do
+            clean_asset="${asset#/}"
+
+            if [ -f "./.output/public/$clean_asset" ]; then
+              echo "OK: $asset"
+            else
+              echo "MISSING: $asset"
+            fi
+          done
+
+          echo ""
+          echo "========================================"
+          echo "CHECK COMPLETE"
+          echo "========================================"
 
       - name: SPA fallback for GitHub Pages
         run: cp ./.output/public/index.html ./.output/public/404.html
