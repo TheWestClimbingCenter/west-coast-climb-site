@@ -113,8 +113,17 @@ export function Header({ onOpenPricing }: HeaderProps) {
       </div>
 
       {open && (
-        <div className="lg:hidden fixed inset-0 top-24 lg:top-20 z-40 bg-navy/95 backdrop-blur-md">
-          <div className="container-pad h-full flex flex-col items-center justify-center gap-8 text-center">
+        <div className="lg:hidden fixed inset-0 z-[60] bg-navy flex flex-col">
+          <div className="container-pad flex items-center justify-end h-24 lg:h-20">
+            <button
+              className="text-white p-2"
+              onClick={() => setOpen(false)}
+              aria-label="Close menu"
+            >
+              <X className="w-7 h-7" />
+            </button>
+          </div>
+          <div className="flex-1 container-pad flex flex-col items-center justify-center gap-8 text-center pb-12">
             {sections.map((s) => (
               <a
                 key={s}
