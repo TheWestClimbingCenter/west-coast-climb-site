@@ -32,12 +32,12 @@ export function Header({ onOpenPricing }: HeaderProps) {
           : "bg-transparent"
       }`}
     >
-      <div className="container-pad flex items-center justify-between h-20">
+      <div className="container-pad flex items-center justify-between h-24 lg:h-20">
         <Link to="/" className="flex items-center gap-2">
           <img
             src={logoWhite}
             alt="The West Climbing Center"
-            className="h-14 sm:h-11 w-auto"
+            className="h-20 sm:h-11 w-auto"
           />
           <span className="hidden sm:block font-display font-extrabold text-white text-sm tracking-tight leading-tight">
             THE WEST
@@ -74,10 +74,10 @@ export function Header({ onOpenPricing }: HeaderProps) {
           </div>
 
           {/* Mobile language pill — left of the burger */}
-          <div className="flex sm:hidden items-center rounded-full border border-white/20 bg-white/5 p-0.5">
+          <div className="flex sm:hidden items-center rounded-full border border-white/20 bg-white/5 p-1">
             <button
               onClick={() => switchLang("en")}
-              className={`px-2.5 py-1 text-[11px] font-bold rounded-full transition-colors ${
+              className={`px-3 py-1.5 text-xs font-bold rounded-full transition-colors ${
                 lang === "en"
                   ? "bg-primary text-primary-foreground"
                   : "text-white/70 hover:text-white"
@@ -86,7 +86,7 @@ export function Header({ onOpenPricing }: HeaderProps) {
             >EN</button>
             <button
               onClick={() => switchLang("pt")}
-              className={`px-2.5 py-1 text-[11px] font-bold rounded-full transition-colors ${
+              className={`px-3 py-1.5 text-xs font-bold rounded-full transition-colors ${
                 lang === "pt"
                   ? "bg-primary text-primary-foreground"
                   : "text-white/70 hover:text-white"
@@ -113,14 +113,14 @@ export function Header({ onOpenPricing }: HeaderProps) {
       </div>
 
       {open && (
-        <div className="lg:hidden bg-navy/95 backdrop-blur-md border-t border-white/5">
-          <div className="container-pad py-6 flex flex-col gap-4">
+        <div className="lg:hidden fixed inset-0 top-24 lg:top-20 z-40 bg-navy/95 backdrop-blur-md">
+          <div className="container-pad h-full flex flex-col items-center justify-center gap-8 text-center">
             {sections.map((s) => (
               <a
                 key={s}
                 href={`#${s}`}
                 onClick={() => setOpen(false)}
-                className="text-base font-medium text-white/90 hover:text-primary"
+                className="text-2xl font-semibold text-white/90 hover:text-primary"
               >
                 {t.nav[s]}
               </a>
@@ -128,21 +128,10 @@ export function Header({ onOpenPricing }: HeaderProps) {
 
             <button
               onClick={() => { onOpenPricing(); setOpen(false); }}
-              className="self-start rounded-full bg-primary px-6 py-3.5 text-base font-bold text-primary-foreground hover:brightness-110 transition-all shadow-glow"
+              className="rounded-full bg-primary px-8 py-4 text-lg font-bold text-primary-foreground hover:brightness-110 transition-all shadow-glow"
             >
               {t.nav.prices}
             </button>
-
-            <div className="flex items-center gap-3 pt-4 border-t border-white/10">
-              <button
-                onClick={() => switchLang("en")}
-                className={`text-xs font-bold px-3 py-1 rounded-full border ${lang === "en" ? "bg-primary text-primary-foreground border-primary" : "border-white/20 text-white/70"}`}
-              >EN</button>
-              <button
-                onClick={() => switchLang("pt")}
-                className={`text-xs font-bold px-3 py-1 rounded-full border ${lang === "pt" ? "bg-primary text-primary-foreground border-primary" : "border-white/20 text-white/70"}`}
-              >PT</button>
-            </div>
           </div>
         </div>
       )}
