@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://west-coast-climb-site.lovable.app/sitemap.xml
